@@ -1,9 +1,14 @@
-import React from 'react'
+import HeroSection from "../../widgets/HeroSection/HeroSection";
+import Recommendations from "../../widgets/Recommendations/Recommendations";
 
-const HomePage = () => {
+export default function HomePage() {
   return (
-    <div>HomePage</div>
-  )
-}
+    <div className="min-h-screen flex flex-col">
+      {/* Hero Section */}
+      <HeroSection />
 
-export default HomePage
+      {/* Recommendations Section */}
+      <Recommendations />
+    </div>
+  );
+}
