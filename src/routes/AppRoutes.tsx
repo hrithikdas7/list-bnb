@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "../Pages/HomePage/HomePage";
 import Layout from "../Pages/Layout";
 import AuthPage from "../Pages/AuthPage/AuthPage";
+import AdDetailPage from "../Pages/AdDetailPage/AdDetailPage";
 // import Layout from "../components/Layout";
 // import Register from "../pages/Register";
 // import Login from "../pages/Login";
@@ -18,10 +19,11 @@ const AppRoutes = () => {
         {/* Public Routes */}
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<AuthPage />} />
+        <Route path="advertisement/:id" element={<AdDetailPage />} />
         {/* <Route path="register" element={<Register />} />
        
         <Route path="ads" element={<AdList />} />
-        <Route path="advertisement/:id" element={<AdDetail />} /> */}
+        */}
 
         {/* Protected Routes */}
         {/* <Route
