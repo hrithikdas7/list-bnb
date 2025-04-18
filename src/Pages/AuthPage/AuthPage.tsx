@@ -1,7 +1,15 @@
 import { useSearchParams } from "react-router-dom";
 import Logo from "../../components/Logo/Logo";
+import {
+  ArrowRightIcon,
+  LockIcon,
+  MailIcon,
+  UserIcon,
+} from "../../components/Icons/Icons";
+import { Form, Input } from "informed";
 
 const AuthPage = () => {
+  const onSubmit = ({ values }) => console.log(values);
   const [searchParams] = useSearchParams();
   const isLogin = searchParams.get("isLogin") === "true";
   console.log(isLogin);
@@ -23,7 +31,7 @@ const AuthPage = () => {
             {isLogin ? "Login To Your Account" : "Create Your Account"}
           </h2>
 
-          <form onSubmit={() => console.log("submit")}>
+          <Form onSubmit={onSubmit}>
             {!isLogin && (
               <div className="mb-4">
                 <label
@@ -33,7 +41,8 @@ const AuthPage = () => {
                   Email <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
-                  <input
+                  <Input
+                    name="email"
                     type="email"
                     id="email"
                     className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500"
@@ -43,20 +52,7 @@ const AuthPage = () => {
                     required
                   />
                   <span className="absolute right-3 top-2.5 text-gray-400">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                      />
-                    </svg>
+                    <MailIcon />
                   </span>
                 </div>
               </div>
@@ -70,7 +66,8 @@ const AuthPage = () => {
                 Username <span className="text-red-500">*</span>
               </label>
               <div className="relative">
-                <input
+                <Input
+                  name="username"
                   type="text"
                   id="username"
                   className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500"
@@ -80,20 +77,7 @@ const AuthPage = () => {
                   required
                 />
                 <span className="absolute right-3 top-2.5 text-gray-400">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                    />
-                  </svg>
+                  <UserIcon />
                 </span>
               </div>
             </div>
@@ -106,7 +90,8 @@ const AuthPage = () => {
                 Password <span className="text-red-500">*</span>
               </label>
               <div className="relative">
-                <input
+                <Input
+                  name="password"
                   type="password"
                   id="password"
                   className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500"
@@ -116,20 +101,7 @@ const AuthPage = () => {
                   required
                 />
                 <span className="absolute right-3 top-2.5 text-gray-400">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                    />
-                  </svg>
+                  <LockIcon />
                 </span>
               </div>
             </div>
@@ -143,7 +115,8 @@ const AuthPage = () => {
                   Confirm Password <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
-                  <input
+                  <Input
+                    name="password"
                     type="password"
                     id="confirm-password"
                     className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500"
@@ -153,20 +126,7 @@ const AuthPage = () => {
                     required
                   />
                   <span className="absolute right-3 top-2.5 text-gray-400">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                      />
-                    </svg>
+                    <LockIcon />
                   </span>
                 </div>
               </div>
@@ -177,22 +137,9 @@ const AuthPage = () => {
               className="w-full bg-pink-500 hover:bg-pink-600 text-white font-medium py-3 px-4 rounded-full flex items-center justify-center"
             >
               Register
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 ml-1"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
+              <ArrowRightIcon />
             </button>
-          </form>
+          </Form>
         </div>
 
         {/* Right Column - Login Prompt */}
