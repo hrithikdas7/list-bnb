@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { PostAd } from "./api";
 import { toast } from "react-toastify";
 
@@ -11,6 +11,8 @@ export type Values = {
 
 export const usePostAdForm = () => {
   const [loading, setLoading] = useState(false);
+
+  const formRef = useRef(null);
   const handleSubmit = async (values: Values) => {
     setLoading(true);
     try {
@@ -20,19 +22,20 @@ export const usePostAdForm = () => {
         values.price,
         values.image
       );
-      console.log(result)
+      console.log(result);
       if (result.status === 200) {
         toast.success("Advertisement posted successfully!");
-      } 
-      else {
+        // @ts-expect-error - formRef is a ref to FormApi, which has a reset method
+        formRef.current.reset();
+      } else {
         toast.error("Failed to post advertisement. Please try again.");
       }
       setLoading(false);
     } catch (error) {
       setLoading(false);
-      console.log("Error submitting ad:", error?.message);
+      console.log("Error submitting ad:", error);
     }
   };
 
-  return { handleSubmit, loading };
+  return { handleSubmit, loading, formRef };
 };

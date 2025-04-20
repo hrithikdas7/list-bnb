@@ -2,13 +2,15 @@ import { Form, Input, TextArea } from "informed";
 import { usePostAdForm, Values } from "./usePostAdForm";
 
 const PostAdForm = () => {
-  const { handleSubmit, loading } = usePostAdForm();
+  const { handleSubmit, loading, formRef } = usePostAdForm();
 
   return (
     <main className="flex-1 p-6">
       <Form
         onSubmit={({ values }) => handleSubmit(values as Values)}
         className="max-w-2xl"
+        //@ts-expect-error - formRef is a ref to FormApi, which has a reset method
+        ref={formRef}
       >
         <div className="mb-6">
           <label

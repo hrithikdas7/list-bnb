@@ -1,3 +1,4 @@
+import { AxiosError, AxiosResponse } from "axios";
 import { getAxiosInstance } from "../../apis/getAxiosInstance";
 
 export const PostAd = async (
@@ -5,7 +6,7 @@ export const PostAd = async (
   description: string,
   price: number,
   image: string
-) => {
+): Promise<AxiosResponse | AxiosError> => {
   try {
     const axiosInstance = await getAxiosInstance();
     const response = await axiosInstance.post("/api/advertisements", {
@@ -15,8 +16,8 @@ export const PostAd = async (
       image,
     });
     return response;
-  } catch (error: any) {
-    console.error("Login failed:", error.response?.data || error.message);
-    return error;
+  } catch (error) {
+    const axiosError = error as AxiosError;
+    return axiosError;
   }
 };

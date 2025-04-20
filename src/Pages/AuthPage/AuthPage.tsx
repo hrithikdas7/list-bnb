@@ -133,7 +133,7 @@ const AuthPage = () => {
               type="submit"
               className="w-full bg-pink-500 hover:bg-pink-600 text-white font-medium py-3 px-4 rounded-full flex items-center justify-center"
             >
-              Register
+              {isLogin ? "Login" : "Register"}
               <ArrowRightIcon />
             </button>
           </Form>

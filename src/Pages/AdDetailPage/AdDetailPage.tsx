@@ -1,9 +1,18 @@
 import ProductSkeleton from "../../components/ProductSkelton/ProductSkelton";
 import { useAdDetailPage } from "./useAdSetailPage";
 
+interface AdDetailDataType {
+  title: string;
+  location: string;
+  last_updated: string;
+  image: string;
+  overview: string;
+}
+
 const AdDetailPage = () => {
   const { AdDetailData, isLoading } = useAdDetailPage();
-  console.log(AdDetailData);
+  // Type assertion
+  const detail = AdDetailData as AdDetailDataType;
   if (isLoading) return <ProductSkeleton />;
   return (
     <div className="max-w-6xl mx-auto p-4">
@@ -13,7 +22,7 @@ const AdDetailPage = () => {
         <div className="w-full md:w-2/3">
           {/* Listing Card */}
           <div className="border border-purple-300 rounded-lg p-4">
-            <h1 className="text-xl font-semibold">{AdDetailData?.title}</h1>
+            <h1 className="text-xl font-semibold">{detail?.title}</h1>
 
             <div className="flex items-center text-sm text-gray-500 mt-1 mb-4 space-x-4">
               <div className="flex items-center">
@@ -29,7 +38,7 @@ const AdDetailPage = () => {
                   />
                 </svg>
                 <span>
-                  {AdDetailData?.location ?? `New York, United States`}
+                  {detail?.location ?? `New York, United States`}
                 </span>
               </div>
 
@@ -46,7 +55,7 @@ const AdDetailPage = () => {
                   />
                 </svg>
                 <span>
-                  {AdDetailData?.last_updated ?? `Nov 01, 2023, 10:00am`}
+                  {detail?.last_updated ?? `Nov 01, 2023, 10:00am`}
                 </span>
               </div>
             </div>
@@ -54,7 +63,7 @@ const AdDetailPage = () => {
             {/* Main Image */}
             <div className="relative">
               <img
-                src={AdDetailData.image}
+                src={detail?.image}
                 alt="No image found"
                 className="max-w-1/3 rounded-lg object-cover"
               />
@@ -67,7 +76,7 @@ const AdDetailPage = () => {
             <h2 className="text-xl font-semibold mb-4">Overview</h2>
             <div className="text-gray-700 space-y-4">
               <p>
-                {AdDetailData?.overview ??
+                {detail?.overview ??
                   `The Apple MacBook Air 13.6-inch laptop is powered by the new M2
                 chip. It is loaded with 8GB RAM and 256GB SSD. The MacBook Air
                 features a brilliant Retina display, a FaceTime HD camera, and

@@ -1,4 +1,5 @@
 import React from "react";
+import { ThreeDotICon } from "../Icons/Icons";
 
 interface AdCardProps {
   id: number;
@@ -61,32 +62,6 @@ const AdCard: React.FC<AdCardProps> = ({
           </div>
         </div>
       </div>
-      // <div className="flex flex-col bg-white p-4 rounded-md mb-4 shadow-sm">
-      //   <div className="flex justify-between items-start">
-      //     <div className="flex gap-4">
-      //       <img
-      //         src={imageUrl}
-      //         alt={title}
-      //         className="w-16 h-16 rounded-md object-cover"
-      //       />
-      //       <div className="flex flex-col">
-      //         <h3 className="font-medium text-gray-800">{title}</h3>
-      //         <p className="text-sm text-gray-500">
-      //           {location} · {postedTime}
-      //         </p>
-      //         <p className="font-semibold mt-1">${price}</p>
-      //       </div>
-      //     </div>
-      //     <div className="flex gap-2">
-      //       <button className="px-3 py-1 bg-gray-50 text-gray-700 rounded-md text-sm">
-      //         View
-      //       </button>
-      //       <button className="px-3 py-1 bg-pink-500 text-white rounded-md text-sm">
-      //         Edit Ad
-      //       </button>
-      //     </div>
-      //   </div>
-      // </div>
     );
   }
 
@@ -113,20 +88,7 @@ const AdCard: React.FC<AdCardProps> = ({
           <div className="font-bold text-pink-500">${price}</div>
           <div className="flex space-x-1">
             <button className="text-gray-400 hover:text-gray-600">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-                />
-              </svg>
+              <ThreeDotICon />
             </button>
           </div>
         </div>

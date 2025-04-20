@@ -1,11 +1,6 @@
 import axios, { AxiosInstance } from "axios";
 
-
-
 const BASE_URL = import.meta.env.VITE_BASE_URL;
-// cont BASE_URL = import.meta.env.REACT_APP_BASE_URL
-
-
 
 let token = "";
 const API_KEY = import.meta.env.VITE_API_KEY;
@@ -25,7 +20,7 @@ export const getAxiosInstance = async (): Promise<AxiosInstance> => {
     headers: {
       Accept: "application/json",
       Authorization: token ? `Bearer ${token}` : "",
-      "x-api-key": API_KEY , 
+      "x-api-key": API_KEY,
     },
   });
 

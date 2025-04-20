@@ -48,11 +48,13 @@ export const useAdlist = () => {
     const result = await deleteAdvertisement(productId);
     console.log("Delete result:", result);
 
-    if (result instanceof Error) {
-      toast.error(`Failed to delete advertisement. Please try again.`);
+    if (result.status !==200) {
+      toast.error(
+        `Failed to delete advertisement. Please try again. ${result?.response?.data?.error?.message}`
+      );
     } else {
       toast.success("Advertisement deleted successfully!");
-      mutate(); // Assuming mutate re-fetches the list of ads
+      mutate();
     }
   };
 

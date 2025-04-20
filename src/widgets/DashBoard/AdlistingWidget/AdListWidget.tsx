@@ -6,6 +6,8 @@ const AdListWidget = () => {
   const { userAds, isLoading, handleShowDetailAD, handleDeleteAD } =
     useAdlist();
   console.log("userAds", userAds);
+
+  if(userAds?.length ===0 ) return <div className="text-center text-gray-500">No ads found.</div>;
   return (
     <>
       {!isLoading
