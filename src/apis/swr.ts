@@ -41,7 +41,7 @@ export const useSwrStatic = <T = any>(
       if (error?.response?.status === 404) return;
 
       if (error?.response?.status === 401) {
-        navigate("/");
+        navigate("/login?isLogin=true");
       }
 
       if (retryCount < 1) {
@@ -80,13 +80,54 @@ export const useSwrData = <T = any, P = any>(
   const { data, error, isLoading, isValidating, mutate } = useSWRImmutable<
     AxiosResponse<T>
   >(path ? [path, payload] : null, fetcherPost, {
+    onErrorRetry: (error, revalidate, { retryCount }) => {
+      if (error?.response?.status === 404) return;
+
+      if (error?.response?.status === 401) {
+        navigate("/login?isLogin=true");
+      }
+
+      if (retryCount < 1) {
+        setTimeout(() => revalidate({ retryCount }), 3000);
+      }
+    },
+    loadingTimeout: 10000,
+    keepPreviousData: true,
+    refreshInterval: 1000 * 60 * 60,
+    ...options,
+  });
+
+  return {
+    data,
+    isLoading,
+    isValidating,
+    isError: error,
+    mutate,
+  };
+};
+
+// Hook for PUT-like (dynamic) data
+export const useSwrPut = <T = any, P = any>(
+  path: string | null,
+  payload: P = {} as P,
+  options: SWRConfiguration = {}
+): {
+  data: AxiosResponse<T> | undefined;
+  isLoading: boolean;
+  isValidating: boolean;
+  isError: any;
+  mutate: KeyedMutator<AxiosResponse<T>>;
+} => {
+  const navigate = useNavigate();
+
+  const { data, error, isLoading, isValidating, mutate } = useSWRImmutable<
+    AxiosResponse<T>
+  >(path ? [path, payload] : null, fetcherPut, {
     onErrorRetry: (error, key, config, revalidate, { retryCount }) => {
       if (error?.response?.status === 404) return;
 
       if (error?.response?.status === 401) {
-        globalMutate("/role/user-permissions");
-        globalMutate("/token-validity-check");
-        navigate("/");
+        navigate("/login?isLogin=true");
       }
 
       if (retryCount < 1) {

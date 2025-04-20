@@ -1,4 +1,3 @@
-import { useSearchParams } from "react-router-dom";
 import Logo from "../../components/Logo/Logo";
 import {
   ArrowRightIcon,
@@ -7,12 +6,10 @@ import {
   UserIcon,
 } from "../../components/Icons/Icons";
 import { Form, Input } from "informed";
+import { useAuth } from "./useAuth";
 
 const AuthPage = () => {
-  const onSubmit = ({ values }) => console.log(values);
-  const [searchParams] = useSearchParams();
-  const isLogin = searchParams.get("isLogin") === "true";
-  console.log(isLogin);
+  const { onSubmit, isLogin } = useAuth();
 
   return (
     <main className="px-4 mt-8">
@@ -31,7 +28,7 @@ const AuthPage = () => {
             {isLogin ? "Login To Your Account" : "Create Your Account"}
           </h2>
 
-          <Form onSubmit={onSubmit}>
+          <Form onSubmit={({ values }) => onSubmit(values)}>
             {!isLogin && (
               <div className="mb-4">
                 <label
