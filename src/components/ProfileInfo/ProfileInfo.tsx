@@ -1,17 +1,16 @@
-import React from "react";
 import { useProfileInfo } from "./useProfileInfo";
 import ProductSkeleton from "../ProductSkelton/ProductSkelton";
 
-interface ProfileProps {
-  name: string;
-  memberSince: string;
-  location: string;
-  email: string;
-  phone: string;
-  avatarUrl: string;
-}
+// interface ProfileProps {
+//   name: string;
+//   memberSince: string;
+//   location: string;
+//   email: string;
+//   phone: string;
+//   avatarUrl: string;
+// }
 
-const ProfileInfo: React.FC<ProfileProps> = () => {
+const ProfileInfo = () => {
   const { ProfileData, isLoading , navigate } = useProfileInfo()
 
 

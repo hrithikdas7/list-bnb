@@ -13,9 +13,7 @@ const AdDetailPage = () => {
         <div className="w-full md:w-2/3">
           {/* Listing Card */}
           <div className="border border-purple-300 rounded-lg p-4">
-            <h1 className="text-xl font-semibold">
-              Apple MacBook Air (2023) Apple M2 Chip
-            </h1>
+            <h1 className="text-xl font-semibold">{AdDetailData?.title}</h1>
 
             <div className="flex items-center text-sm text-gray-500 mt-1 mb-4 space-x-4">
               <div className="flex items-center">
@@ -30,7 +28,9 @@ const AdDetailPage = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-                <span>New York, United States</span>
+                <span>
+                  {AdDetailData?.location ?? `New York, United States`}
+                </span>
               </div>
 
               <div className="flex items-center">
@@ -45,36 +45,20 @@ const AdDetailPage = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-                <span>Nov 01, 2023, 10:00am</span>
+                <span>
+                  {AdDetailData?.last_updated ?? `Nov 01, 2023, 10:00am`}
+                </span>
               </div>
             </div>
 
             {/* Main Image */}
             <div className="relative">
               <img
-                src="/api/placeholder/640/400"
-                alt="MacBook Air on desk with accessories"
-                className="w-full rounded-lg object-cover"
+                src={AdDetailData.image}
+                alt="No image found"
+                className="max-w-1/3 rounded-lg object-cover"
               />
 
-              {/* Thumbnail Images */}
-              <div className="flex mt-4 space-x-2">
-                <img
-                  src="/api/placeholder/80/60"
-                  alt="MacBook detail"
-                  className="w-20 h-16 rounded border border-pink-300 object-cover"
-                />
-                <img
-                  src="/api/placeholder/80/60"
-                  alt="MacBook with accessories"
-                  className="w-20 h-16 rounded border border-gray-300 object-cover"
-                />
-                <img
-                  src="/api/placeholder/80/60"
-                  alt="MacBook keyboard"
-                  className="w-20 h-16 rounded border border-gray-300 object-cover"
-                />
-              </div>
             </div>
           </div>
 
@@ -83,7 +67,8 @@ const AdDetailPage = () => {
             <h2 className="text-xl font-semibold mb-4">Overview</h2>
             <div className="text-gray-700 space-y-4">
               <p>
-                The Apple MacBook Air 13.6-inch laptop is powered by the new M2
+                {AdDetailData?.overview ??
+                  `The Apple MacBook Air 13.6-inch laptop is powered by the new M2
                 chip. It is loaded with 8GB RAM and 256GB SSD. The MacBook Air
                 features a brilliant Retina display, a FaceTime HD camera, and
                 studio-quality mics. It comes with the same compact design but
@@ -91,29 +76,9 @@ const AdDetailPage = () => {
                 cooling system to sustain enhanced performance. macOS and M2
                 work together to bring more speed and responsiveness to all your
                 go-to apps. The Apple MacBook Air comes with active cooling that
-                enables blazing-fast performance.
+                enables blazing-fast performance.`}
               </p>
 
-              <p>
-                The Apple M2 chip is an 8-core CPU with 4 performance cores and
-                4 efficiency cores. It comes with 10- core GPU, 16-core Neural
-                Engine, and 100GB/s memory bandwidth for superfluid multitasking
-                and working with massive files. The M2 is built using an
-                enhanced second-generation 5-nanometer technology. It features
-                over 20 billion transistors - 25 percent more than M1. And its
-                16-core Neural Engine is capable of executing up to 15.8
-                trillion operations per second to accelerate machine learning
-                tasks. The high-performance media engine on M2 supports ProRes
-                encode and decode. So you can play and edit up to 11 streams of
-                4K ProRes video and up to 2 streams of 8K ProRes video. The
-                Apple MacBook Air 13.6-inch comes with a brilliant 13.6-inch
-                (diagonal) LED-backlit display with IPS technology, 2560-by-1664
-                native resolution at 224 pixels per inch with support for
-                millions of colors. It takes images on an incredible level of
-                detail and realism. The bright LED backlighting delivers deep
-                blacks and bright whites. It features 500 nits brightness, Wide
-                color (P3), and True Tone technology.
-              </p>
             </div>
           </div>
         </div>

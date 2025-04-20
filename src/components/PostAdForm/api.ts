@@ -14,9 +14,9 @@ export const PostAd = async (
       price,
       image,
     });
-    return response.data;
+    return response;
   } catch (error: any) {
     console.error("Login failed:", error.response?.data || error.message);
-    throw error;
+    return error;
   }
 };

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { PostAd } from "./api";
+import { toast } from "react-toastify";
 
 export type Values = {
   description: string;
@@ -19,9 +20,12 @@ export const usePostAdForm = () => {
         values.price,
         values.image
       );
-      if (result) {
-        console.log("Ad posted successfully:", result);
-        // Optionally, you can reset the form or redirect the user
+      console.log(result)
+      if (result.status === 200) {
+        toast.success("Advertisement posted successfully!");
+      } 
+      else {
+        toast.error("Failed to post advertisement. Please try again.");
       }
       setLoading(false);
     } catch (error) {

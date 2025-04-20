@@ -5,10 +5,8 @@ export const useAdDetailPage = () => {
   const { id } = useParams<{ id: string }>();
   const { data, isLoading } = useSwrStatic(`/api/advertisements/${id}`);
 
-  const AdDetailData = data?.data;
-
   return {
-    AdDetailData,
+    AdDetailData: data?.data,
     isLoading,
   };
 };

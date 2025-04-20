@@ -18,6 +18,7 @@ interface Product {
 
 export const useRecommendations = (itemsPerPage: number = 6) => {
   const { data: projectData, isLoading } = useSwrStatic(`/api/advertisements`);
+  console.log("projectData", projectData);
   const products: Product[] = projectData?.data || [];
 
   const {
