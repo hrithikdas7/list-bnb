@@ -18,7 +18,7 @@ const ProfileEditForm = () => {
                 name="name"
                 id="name"
                 placeholder="Type here"
-                // value={formData.name}
+                // value={profile?.username}
                 // onChange={handleChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500"
                 required
@@ -38,7 +38,7 @@ const ProfileEditForm = () => {
                 name="email"
                 id="email"
                 placeholder="Type here"
-                // value={formData.email}
+                // value={profile?.email}
                 // onChange={handleChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500"
                 required

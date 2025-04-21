@@ -4,7 +4,7 @@ import AdListWidget from "../AdlistingWidget/AdListWidget";
 const DashBoardHome = () => {
   return (
     <>
-      <ProfileInfo />
+      <ProfileInfo /> 
       <div className="space-y-4">
         <AdListWidget />
       </div>

@@ -1,38 +1,36 @@
-import { ProfileDataType, useProfileInfo } from "./useProfileInfo";
-import ProductSkeleton from "../ProductSkelton/ProductSkelton";
+import { useProfileInfo } from "./useProfileInfo";
+
 import { EmailIcon, LocationIcon, PhoneIcon } from "../Icons/Icons";
 
 const ProfileInfo = () => {
-  const { ProfileData, isLoading, navigate } = useProfileInfo();
-  console.log("ProfileData", ProfileData);
+  const { ProfileData, navigate } = useProfileInfo();
 
-  if (isLoading) return <ProductSkeleton />;
-
-  // Type assertion
-  const profile = ProfileData?.data as ProfileDataType;
+  if (!ProfileData) {
+    return <div className="text-red-500">Profile data not found</div>;
+  }
 
   return (
     <div className="flex items-start gap-4 mb-8">
       <img
-        src={profile.image}
-        alt={profile.username}
+        src={ProfileData.image}
+        alt={ProfileData.username}
         className="w-12 h-12 rounded-full object-cover"
       />
       <div>
-        <h2 className="text-lg font-semibold">{profile.username}</h2>
+        <h2 className="text-lg font-semibold">{ProfileData.username}</h2>
         <p className="text-sm text-gray-500">Member since 2023</p>
         <div className="flex flex-col mt-2 text-sm text-gray-600">
           <div className="flex items-center gap-2 mt-1">
             <LocationIcon />
-            <span>{profile.location}</span>
+            <span>{ProfileData.location}</span>
           </div>
           <div className="flex items-center gap-2 mt-1">
             <EmailIcon />
-            <span>{profile.email}</span>
+            <span>{ProfileData.email}</span>
           </div>
           <div className="flex items-center gap-2 mt-1">
             <PhoneIcon />
-            <span>{profile.phone}</span>
+            <span>{ProfileData.phone}</span>
           </div>
         </div>
       </div>

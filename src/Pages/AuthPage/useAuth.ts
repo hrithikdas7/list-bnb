@@ -45,6 +45,7 @@ export const useAuth = () => {
       if (result?.status === 200) {
         localStorage.setItem("USER_ACCESS_TOKEN", result.data?.jwt);
         localStorage.setItem("USER_ID", result.data?.user.id);
+        localStorage.setItem("USER_DETAILS", JSON.stringify(result.data.user));
         setIsAuthenticated(true);
         navigate("/dashboard");
       } else {
@@ -67,6 +68,7 @@ export const useAuth = () => {
     if (result.status === 200) {
       localStorage.setItem("USER_ACCESS_TOKEN", result.data?.jwt);
       localStorage.setItem("USER_ID", result.data?.user.id);
+      localStorage.setItem("USER_DETAILS", JSON.stringify(result.data.user));
       setIsAuthenticated(true);
       navigate("/dashboard");
       console.log("User logged in successfully:", result);

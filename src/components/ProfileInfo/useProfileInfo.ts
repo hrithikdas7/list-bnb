@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useSwrStatic } from "../../apis/swr";
+
 
 export interface ProfileDataType {
   username: string;
@@ -10,8 +10,11 @@ export interface ProfileDataType {
 }
 
 export const useProfileInfo = () => {
-  const { data: ProfileData, isLoading } = useSwrStatic(`/api/profile`);
+  const ProfileDataString = localStorage.getItem("USER_DETAILS");
+  const ProfileData: ProfileDataType | null = ProfileDataString 
+    ? JSON.parse(ProfileDataString) 
+    : null;
   const navigate = useNavigate();
 
-  return { ProfileData, isLoading, navigate };
+  return { ProfileData, navigate };
 };
